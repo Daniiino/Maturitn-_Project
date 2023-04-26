@@ -1,32 +1,57 @@
-# Prerequisites
-*.d
+# Gradle files
+.gradle/
+build/
 
-# Compiled Object files
-*.slo
-*.lo
-*.o
-*.obj
+# Local configuration file (sdk path, etc)
+local.properties
 
-# Precompiled Headers
-*.gch
-*.pch
+# Log/OS Files
+*.log
 
-# Compiled Dynamic libraries
-*.so
-*.dylib
+# Android Studio generated files and folders
+captures/
+.externalNativeBuild/
+.cxx/
+*.apk
+output.json
+
+# IntelliJ
+*.iml
+.idea/
+misc.xml
+deploymentTargetDropDown.xml
+render.experimental.xml
+
+# Keystore files
+*.jks
+*.keystore
+
+# Google Services (e.g. APIs or Firebase)
+google-services.json
+
+# Android Profiling
+*.hprof
+*.bin
+*.lock
+*.jar
+*.receipt
+*.properties
+*.pom
+*.module
+*.aar
+*.txt
+*.1-runtime
+*.dex
+*.flat
 *.dll
-
-# Fortran module files
-*.mod
-*.smod
-
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
-
-# Executables
+*.zip
+*.0-runtime
+*.4
+*.10
+*.1
+*.0
 *.exe
-*.out
-*.app
+*.MF
+*.6-runtime
+*.lck
+*.ok
