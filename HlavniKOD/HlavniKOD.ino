@@ -388,6 +388,7 @@ int durations2[] = {
 // sizeof gives the number of bytes, each int value is composed of two bytes (16 bits)
 // there are two values per note (pitch and duration), so for each note there are four bytes
 int notes = sizeof(melody) / sizeof(melody[0]) / 2;
+int Song = 1;
 // this calculates the duration of a whole note in ms
 int wholenote = (60000 * 4) / tempo;
 int divider = 0, noteDuration = 0;
@@ -442,7 +443,29 @@ void setup(){
   pinMode(VIBRATION_PIN, INPUT);
   lcd.begin(); // initialize the lcd
   lcd.backlight();
-
+  lcd.setCursor(2,0);
+  lcd.print("Zabezpecovaci"); 
+  lcd.setCursor(2,1);
+  lcd.print("---System---"); 
+  delay(2500);
+  lcd.clear();
+  lcd.print("Vyber alarmni znelku");
+  delay(1500);
+  lcd.clear();
+  lcd.print("Stisknutim cisla");
+  lcd.setCursor(0,1);
+  lcd.print("jedna nebo dva vyber:");
+  delay(1500);
+  lcd.clear();
+  lcd.setCursor(0,0);
+  lcd.print("1.Pirati z Karibiku"); 
+  lcd.setCursor(0,1);
+  lcd.print("2.The Lion Sleeps Tonight"); 
+  char pisen = keypad.getKey();
+  if (pisen) {
+    Song == pisen;
+  lcd.print("Znelka je Vybrana"); 
+  }
 }
 
  
@@ -553,7 +576,7 @@ void Poplach(){
   lcd.setCursor(0,1);
   lcd.print("Zadej PIN:"); 
   Radek++;
-  if(Song == 0){
+  if(Song == 1){
     //Songa jedna
        for(int thisNote = 0; thisNote < notes * 2; thisNote = thisNote + 2) {
   ZadaniPinu();
@@ -612,12 +635,6 @@ void Poplach(){
 }
 void Menu(){
  if(Start == 0){
- lcd.setCursor(2,0);
- lcd.print("Zabezpecovaci"); 
- lcd.setCursor(2,1);
- lcd.print("---System---"); 
- delay(2500);
- lcd.clear();
  lcd.print("Zadej PIN:"); 
  Start++; 
  }
