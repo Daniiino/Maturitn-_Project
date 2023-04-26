@@ -449,6 +449,24 @@ void setup(){
   lcd.print("---System---"); 
   delay(2500);
   lcd.clear();
+  lcd.print("Zadej Nový PIN :");
+  lcd.setCursor(0,1);
+  char NP = keypad.getKey();
+  if (NP) {
+   if(s < 4){
+    q = NP;
+    PIN[s] = q;
+    lcd.setCursor(c, 1);
+    //lcd.print(KOD[s]);
+    s++;
+    c++;
+     }
+    lcd.setCursor(cursorColumn, Radek); // move cursor to   (cursorColumn, 0)
+    lcd.print("NP"); 
+    
+    cursorColumn++;                 // move cursor to next position
+                                    // if reaching limit, clear LCD
+  }
   lcd.print("Vyber alarmni znelku");
   delay(1500);
   lcd.clear();
@@ -466,6 +484,7 @@ void setup(){
     Song == pisen;
   lcd.print("Znelka je Vybrana"); 
   }
+  clearKod()
 }
 
  
