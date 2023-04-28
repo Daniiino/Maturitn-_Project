@@ -484,7 +484,7 @@ void setup(){
     Song == pisen;
   lcd.print("Znelka je Vybrana"); 
   }
-  clearKod()
+  clearKod();
 }
 
  
@@ -543,20 +543,12 @@ if (zaply == 1){
 
 // Metody 
 void Infra(){
-   // načtení informací ze všech vstupních pinů
-  // Serial.print("Stav vstupnich pinu: ");
-    // jednobitová proměnná pro uložení stavu
     bool stav;
-    // načtení stavu aktuálního pinu, nutná
-    // negace, protože modul vrací 0 při detekci
     stav = !(digitalRead(InfraPin));
      //lcd.print(stav);
      if(stav == 1){
       Detekce();
       Poplach();
-    //Serial.print("  ");
-  // ukončení řádku na sériové lince
-   //Serial.println();
 } 
   }
 void Vibrace(){
@@ -627,31 +619,31 @@ void Poplach(){
   int size1 = sizeof(durations) / sizeof(int);
 
   for (int note1 = 0; note1 < size1; note1++) {
-    int duration2 = 1000 / durations[note];
-    tone(BUZZER_PIN, melody2[note], duration);
+    int duration2 = 1000 / durations[note1];
+    tone(buzzer, melody2[note1], duration2);
     int pauseBetweenNotes = duration2 * 1.30;
     delay(pauseBetweenNotes);
     
     //stop the tone playing:
-    noTone(BUZZER_PIN);
-  }
+    noTone(buzzer);
 
     if(alarm == 1){
       break;
     }else{
     // we only play the note for 90% of the duration, leaving 10% as a pause
-    tone(buzzer, melody[thisNote], noteDuration*0.9);
+    tone(buzzer, melody2[ThisNote], noteDuration*0.9);
 
     // Wait for the specief duration before playing the next note.
     delay(noteDuration);
     // stop the waveform generation before the next note.
     noTone(buzzer);
        }
-  }}
+       }
+  }
   clearAlarm();
  
-  
 }
+
 void Menu(){
  if(Start == 0){
  lcd.print("Zadej PIN:"); 
