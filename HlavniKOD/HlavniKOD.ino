@@ -1,10 +1,4 @@
-/*
-* Created by ArduinoGetStarted.com
-*
-* This example code is in the public domain
-*
-* Tutorial page: https://arduinogetstarted.com/tutorials/arduino-keypad-lcd
-*/
+//Noty
 #define NOTE_B0  31
 #define NOTE_C1  33
 #define NOTE_CS1 35
@@ -95,325 +89,71 @@
 #define NOTE_D8  4699
 #define NOTE_DS8 4978
 #define REST      0
-// change this to make the song slower or faster
-int tempo = 120;
-// notes of the moledy followed by the duration.
-// a 4 means a quarter note, 8 an eighteenth , 16 sixteenth, so on
-// !!negative numbers are used to represent dotted notes,
-// so -4 means a dotted quarter note, that is, a quarter plus an eighteenth!!
+//////////////////////////////////////////
+
+//Písnička
 int melody[] = {
-  NOTE_E4, NOTE_G4, NOTE_A4, NOTE_A4, REST,
-  NOTE_A4, NOTE_B4, NOTE_C5, NOTE_C5, REST,
-  NOTE_C5, NOTE_D5, NOTE_B4, NOTE_B4, REST,
-  NOTE_A4, NOTE_G4, NOTE_A4, REST,
-  
-  NOTE_E4, NOTE_G4, NOTE_A4, NOTE_A4, REST,
-  NOTE_A4, NOTE_B4, NOTE_C5, NOTE_C5, REST,
-  NOTE_C5, NOTE_D5, NOTE_B4, NOTE_B4, REST,
-  NOTE_A4, NOTE_G4, NOTE_A4, REST,
-  
-  NOTE_E4, NOTE_G4, NOTE_A4, NOTE_A4, REST,
-  NOTE_A4, NOTE_C5, NOTE_D5, NOTE_D5, REST,
-  NOTE_D5, NOTE_E5, NOTE_F5, NOTE_F5, REST,
-  NOTE_E5, NOTE_D5, NOTE_E5, NOTE_A4, REST,
-  
-  NOTE_A4, NOTE_B4, NOTE_C5, NOTE_C5, REST,
-  NOTE_D5, NOTE_E5, NOTE_A4, REST,
-  NOTE_A4, NOTE_C5, NOTE_B4, NOTE_B4, REST,
-  NOTE_C5, NOTE_A4, NOTE_B4, REST,
-  
-  NOTE_A4, NOTE_A4,
-  //Repeat of first part
-  NOTE_A4, NOTE_B4, NOTE_C5, NOTE_C5, REST,
-  NOTE_C5, NOTE_D5, NOTE_B4, NOTE_B4, REST,
-  NOTE_A4, NOTE_G4, NOTE_A4, REST,
-  
-  NOTE_E4, NOTE_G4, NOTE_A4, NOTE_A4, REST,
-  NOTE_A4, NOTE_B4, NOTE_C5, NOTE_C5, REST,
-  NOTE_C5, NOTE_D5, NOTE_B4, NOTE_B4, REST,
-  NOTE_A4, NOTE_G4, NOTE_A4, REST,
-  
-  NOTE_E4, NOTE_G4, NOTE_A4, NOTE_A4, REST,
-  NOTE_A4, NOTE_C5, NOTE_D5, NOTE_D5, REST,
-  NOTE_D5, NOTE_E5, NOTE_F5, NOTE_F5, REST,
-  NOTE_E5, NOTE_D5, NOTE_E5, NOTE_A4, REST,
-  
-  NOTE_A4, NOTE_B4, NOTE_C5, NOTE_C5, REST,
-  NOTE_D5, NOTE_E5, NOTE_A4, REST,
-  NOTE_A4, NOTE_C5, NOTE_B4, NOTE_B4, REST,
-  NOTE_C5, NOTE_A4, NOTE_B4, REST,
-  //End of Repeat
-  
-  NOTE_E5, REST, REST, NOTE_F5, REST, REST,
-  NOTE_E5, NOTE_E5, REST, NOTE_G5, REST, NOTE_E5, NOTE_D5, REST, REST,
-  NOTE_D5, REST, REST, NOTE_C5, REST, REST,
-  NOTE_B4, NOTE_C5, REST, NOTE_B4, REST, NOTE_A4,
-  
-  NOTE_E5, REST, REST, NOTE_F5, REST, REST,
-  NOTE_E5, NOTE_E5, REST, NOTE_G5, REST, NOTE_E5, NOTE_D5, REST, REST,
-  NOTE_D5, REST, REST, NOTE_C5, REST, REST,
-  NOTE_B4, NOTE_C5, REST, NOTE_B4, REST, NOTE_A4
-};
-int durations[] = {
-  8, 8, 4, 8, 8,
-  8, 8, 4, 8, 8,
-  8, 8, 4, 8, 8,
-  8, 8, 4, 8,
-  
-  8, 8, 4, 8, 8,
-  8, 8, 4, 8, 8,
-  8, 8, 4, 8, 8,
-  8, 8, 4, 8,
-  
-  8, 8, 4, 8, 8,
-  8, 8, 4, 8, 8,
-  8, 8, 4, 8, 8,
-  8, 8, 8, 4, 8,
-  
-  8, 8, 4, 8, 8,
-  4, 8, 4, 8,
-  8, 8, 4, 8, 8,
-  8, 8, 4, 4,
-  
-  4, 8,
-  //Repeat of First Part
-  8, 8, 4, 8, 8,
-  8, 8, 4, 8, 8,
-  8, 8, 4, 8,
-  
-  8, 8, 4, 8, 8,
-  8, 8, 4, 8, 8,
-  8, 8, 4, 8, 8,
-  8, 8, 4, 8,
-  
-  8, 8, 4, 8, 8,
-  8, 8, 4, 8, 8,
-  8, 8, 4, 8, 8,
-  8, 8, 8, 4, 8,
-  
-  8, 8, 4, 8, 8,
-  4, 8, 4, 8,
-  8, 8, 4, 8, 8,
-  8, 8, 4, 4,
-  //End of Repeat
-  
-  4, 8, 4, 4, 8, 4,
-  8, 8, 8, 8, 8, 8, 8, 8, 4,
-  4, 8, 4, 4, 8, 4,
-  8, 8, 8, 8, 8, 2,
-  
-  4, 8, 4, 4, 8, 4,
-  8, 8, 8, 8, 8, 8, 8, 8, 4,
-  4, 8, 4, 4, 8, 4,
-  8, 8, 8, 8, 8, 2
-};
+ NOTE_A4,-4, NOTE_A4,-4, NOTE_A4,16, NOTE_A4,16, NOTE_A4,16, NOTE_A4,16, NOTE_F4,8, REST,8,
+  NOTE_A4,-4, NOTE_A4,-4, NOTE_A4,16, NOTE_A4,16, NOTE_A4,16, NOTE_A4,16, NOTE_F4,8, REST,8,
+  NOTE_A4,4, NOTE_A4,4, NOTE_A4,4, NOTE_F4,-8, NOTE_C5,16,
 
-int melody2[] = {
-  NOTE_F4, NOTE_G4, NOTE_A4, NOTE_G4, NOTE_A4,
-  NOTE_AS4, NOTE_A4, NOTE_G4, NOTE_F4, NOTE_G4,
-  NOTE_A4, NOTE_C4, NOTE_C4, NOTE_C4, NOTE_C4,
-  NOTE_C4,
+  NOTE_A4,4, NOTE_F4,-8, NOTE_C5,16, NOTE_A4,2,//4
+  NOTE_E5,4, NOTE_E5,4, NOTE_E5,4, NOTE_F5,-8, NOTE_C5,16,
+  NOTE_A4,4, NOTE_F4,-8, NOTE_C5,16, NOTE_A4,2,
   
-  NOTE_F4, NOTE_G4, NOTE_A4, NOTE_G4, NOTE_A4,
-  NOTE_AS4, NOTE_A4, NOTE_G4, NOTE_F4, NOTE_G4,
-  NOTE_A4, NOTE_C4, NOTE_C4, NOTE_C4, NOTE_C4,
-  NOTE_C4,  REST, NOTE_A4,
-  
-  NOTE_A4, NOTE_A4, NOTE_A4, NOTE_A4, NOTE_A4, NOTE_A4, NOTE_A4, NOTE_A4,
-  NOTE_AS4, NOTE_AS4, NOTE_AS4, NOTE_AS4, NOTE_AS4, NOTE_AS4, NOTE_AS4, NOTE_AS4,
-  NOTE_A4, NOTE_A4, NOTE_A4, NOTE_A4, NOTE_A4, NOTE_A4, NOTE_A4, NOTE_A4,
-  NOTE_G4, NOTE_G4, NOTE_G4, NOTE_G4, NOTE_G4, NOTE_G4, NOTE_G4, NOTE_G4,
-  
-  NOTE_A4, NOTE_A4, NOTE_A4, NOTE_A4, NOTE_A4, NOTE_A4, NOTE_A4, NOTE_A4,
-  NOTE_AS4, NOTE_AS4, NOTE_AS4, NOTE_AS4, NOTE_AS4, NOTE_AS4, NOTE_AS4, NOTE_AS4,
-  NOTE_A4, NOTE_A4, NOTE_A4, NOTE_A4, NOTE_A4, NOTE_A4, NOTE_A4, NOTE_A4,
-  NOTE_G4, NOTE_G4, NOTE_G4, NOTE_G4, NOTE_G4, NOTE_G4, NOTE_G4, NOTE_G4,
-  
-  NOTE_F4, NOTE_G4, NOTE_A4, NOTE_G4, NOTE_A4,
-  NOTE_AS4, NOTE_A4, NOTE_G4, NOTE_F4, NOTE_G4,
-  NOTE_A4, NOTE_G4, NOTE_F4, NOTE_A4,
-  NOTE_G4,
-  NOTE_C5, NOTE_A4, NOTE_G4, NOTE_A4, NOTE_C5,
-  NOTE_AS4, NOTE_A4, NOTE_G4, NOTE_F4, NOTE_G4,
-  NOTE_A4, NOTE_G4, NOTE_F4, NOTE_A4,
-  NOTE_G4,
-  
-  NOTE_C5,
-  NOTE_C5, NOTE_AS4, NOTE_C5, NOTE_AS4,
-  NOTE_A4, NOTE_C4, NOTE_C4, NOTE_C4, NOTE_C4,
-  NOTE_C4,
-  
-  REST, NOTE_A4, NOTE_G4, NOTE_F4, NOTE_E4, NOTE_D4, NOTE_C4, 
-  NOTE_D4,
-  REST, NOTE_A4, NOTE_G4, NOTE_F4, NOTE_E4, NOTE_D4, NOTE_C4, 
-  NOTE_D4,
-  
-  NOTE_F4, NOTE_G4, NOTE_A4, NOTE_G4, NOTE_A4,
-  NOTE_AS4, NOTE_A4, NOTE_G4, NOTE_F4, NOTE_G4,
-  NOTE_A4, NOTE_G4, NOTE_F4, NOTE_A4,
-  NOTE_G4,
-  NOTE_C5, NOTE_A4, NOTE_G4, NOTE_A4, NOTE_C5,
-  NOTE_AS4, NOTE_A4, NOTE_G4, NOTE_F4, NOTE_G4,
-  NOTE_A4, NOTE_G4, NOTE_F4, NOTE_A4,
-  NOTE_G4,
-  
-  NOTE_C5,
-  NOTE_C5, NOTE_AS4, NOTE_C5, NOTE_AS4,
-  NOTE_A4, NOTE_C4, NOTE_C4, NOTE_C4, NOTE_C4,
-  NOTE_C4,
-  
-  REST, NOTE_A4, NOTE_G4, NOTE_F4, NOTE_E4, NOTE_D4, NOTE_C4, 
-  NOTE_D4,
-  REST, NOTE_A4, NOTE_G4, NOTE_F4, NOTE_E4, NOTE_D4, NOTE_C4, 
-  NOTE_D4,
-  
-  NOTE_F4, NOTE_G4, NOTE_A4, NOTE_G4, NOTE_A4,
-  NOTE_AS4, NOTE_A4, NOTE_G4, NOTE_F4, NOTE_G4,
-  NOTE_A4, NOTE_C4, NOTE_C4, NOTE_C4, NOTE_C4,
-  NOTE_C4, 
-  
-  NOTE_F4, NOTE_G4, NOTE_A4, NOTE_G4, NOTE_A4,
-  NOTE_AS4, NOTE_A4, NOTE_G4, NOTE_F4, NOTE_G4,
-  NOTE_A4, NOTE_G4, NOTE_F4, NOTE_A4,
-  NOTE_G4,
-  NOTE_C5, NOTE_A4, NOTE_G4, NOTE_A4, NOTE_C5,
-  NOTE_AS4, NOTE_A4, NOTE_G4, NOTE_F4, NOTE_G4,
-  NOTE_A4, NOTE_G4, NOTE_F4, NOTE_A4,
-  NOTE_G4,
-  
-  NOTE_C5,
-  NOTE_C5, NOTE_AS4, NOTE_C5, NOTE_AS4,
-  NOTE_A4, NOTE_C4, NOTE_C4, NOTE_C4, NOTE_C4,
-  NOTE_C4,
-  
-  REST, NOTE_A4, NOTE_G4, NOTE_F4, NOTE_E4, NOTE_D4, NOTE_C4, 
-  NOTE_D4,
-  REST, NOTE_A4, NOTE_G4, NOTE_F4, NOTE_E4, NOTE_D4, NOTE_C4, 
-  NOTE_D4,
-  
-  NOTE_F4, NOTE_G4, NOTE_A4, NOTE_G4, NOTE_A4,
-  NOTE_AS4, NOTE_A4, NOTE_G4, NOTE_F4, NOTE_G4,
-  NOTE_A4, NOTE_C4, NOTE_C4, NOTE_C4, NOTE_C4,
-  NOTE_C4
-};
-int durations2[] = {
-  4, 4, 8, 4, 8,
-  4, 4, 8, 4, 8,
-  4, 8, 4, 8, 4,
-  1,
-  
-  4, 4, 8, 4, 8,
-  4, 4, 8, 4, 8,
-  4, 8, 4, 8, 4,
-  2, 8, 16,
-  
-  8, 16, 8, 16, 8, 16, 8, 16,
-  8, 16, 8, 16, 8, 16, 8, 16,
-  8, 16, 8, 16, 8, 16, 8, 16,
-  8, 16, 8, 16, 8, 16, 8, 16,
-  
-  8, 16, 8, 16, 8, 16, 8, 16,
-  8, 16, 8, 16, 8, 16, 8, 16,
-  8, 16, 8, 16, 8, 16, 8, 16,
-  8, 16, 8, 16, 8, 16, 8, 16,
-  
-  4, 4, 8, 4, 8,
-  4, 4, 8, 4, 8,
-  4, 4, 4, 4,
-  1,
-  4, 4, 8, 4, 8,
-  4, 4, 8, 4, 8,
-  4, 4, 4, 4,
-  1,
-  
-  1,
-  4, 8, 8, 2,
-  4, 8, 4, 8, 4,
-  1,
-  
-  4, 8, 8, 8, 8, 8, 8, 
-  1,
-  4, 8, 8, 8, 8, 8, 8, 
-  1,
-  
-  4, 4, 8, 4, 8,
-  4, 4, 8, 4, 8,
-  4, 4, 4, 4,
-  1,
-  4, 4, 8, 4, 8,
-  4, 4, 8, 4, 8,
-  4, 4, 4, 4,
-  1,
-  
-  1,
-  4, 8, 8, 2,
-  4, 8, 4, 8, 4,
-  1,
-  
-  4, 8, 8, 8, 8, 8, 8, 
-  1,
-  4, 8, 8, 8, 8, 8, 8, 
-  1,
-  
-  4, 4, 8, 4, 8,
-  4, 4, 8, 4, 8,
-  4, 8, 4, 8, 4,
-  1, 
-  
-  4, 4, 8, 4, 8,
-  4, 4, 8, 4, 8,
-  4, 4, 4, 4,
-  1,
-  4, 4, 8, 4, 8,
-  4, 4, 8, 4, 8,
-  4, 4, 4, 4,
-  1,
-  
-  1,
-  4, 8, 8, 2,
-  4, 8, 4, 8, 4,
-  1,
-  
-  4, 8, 8, 8, 8, 8, 8, 
-  1,
-  4, 8, 8, 8, 8, 8, 8, 
-  1,
-  
-  4, 4, 8, 4, 8,
-  4, 4, 8, 4, 8,
-  4, 8, 4, 8, 4,
-  1
-};
+  NOTE_A5,4, NOTE_A4,-8, NOTE_A4,16, NOTE_A5,4, NOTE_GS5,-8, NOTE_G5,16, //7 
+  NOTE_DS5,16, NOTE_D5,16, NOTE_DS5,8, REST,8, NOTE_A4,8, NOTE_DS5,4, NOTE_D5,-8, NOTE_CS5,16,
 
-// sizeof gives the number of bytes, each int value is composed of two bytes (16 bits)
-// there are two values per note (pitch and duration), so for each note there are four bytes
+  NOTE_C5,16, NOTE_B4,16, NOTE_C5,16, REST,8, NOTE_F4,8, NOTE_GS4,4, NOTE_F4,-8, NOTE_A4,-16,//9
+  NOTE_C5,4, NOTE_A4,-8, NOTE_C5,16, NOTE_E5,2,
+
+  NOTE_A5,4, NOTE_A4,-8, NOTE_A4,16, NOTE_A5,4, NOTE_GS5,-8, NOTE_G5,16, //7 
+  NOTE_DS5,16, NOTE_D5,16, NOTE_DS5,8, REST,8, NOTE_A4,8, NOTE_DS5,4, NOTE_D5,-8, NOTE_CS5,16,
+
+  NOTE_C5,16, NOTE_B4,16, NOTE_C5,16, REST,8, NOTE_F4,8, NOTE_GS4,4, NOTE_F4,-8, NOTE_A4,-16,//9
+  NOTE_A4,4, NOTE_F4,-8, NOTE_C5,16, NOTE_A4,2,
+  
+};
+int tempo = 120;
 int notes = sizeof(melody) / sizeof(melody[0]) / 2;
-int Song = 1;
-// this calculates the duration of a whole note in ms
 int wholenote = (60000 * 4) / tempo;
 int divider = 0, noteDuration = 0;
-int buzzer = 17;
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//Knihovny
 #include <Keypad.h>
 #include <LiquidCrystal_I2C.h>
-bool stav = 0;
+/////////////////////////////////////////
+
+
+//Definované Piny
 #define VIBRATION_PIN 14
-int inputPin = 15;               // choose the input pin (for PIR sensor)
-int pirState = LOW;             // we start, assuming no motion detected
-int val = 0;                    // variable for reading the pin status
-const int cidloPin = 2;
-int InfraPin=22;
-int pinOut = 3;
 int PinPoplach = 0;
-int zaply = 0;
-const int ROW_NUM    = 4; // four rows
-const int COLUMN_NUM = 3; // four columns
+int buzzer = 17;
+/////////////////////////////////////////
+
+//Promněné 
+int PoDea = 0;
+int D = 0;
+int P = 0;
+int Song = 1;
+int ZaplyVyber = 0;
+int Start = 0;
 String q = "0";
 int s = 0;
 int c = 1;
-int alarm = 0;
 int Radek = 0;
-int Start = 0;
-String PIN [4] = {"1","2","3","4"};
+int PrvniStart = 0;
+int zaply = 0;
+int alarm = 0;
+///////////////////////////////////////////
+
+
+
+//Klávesnice
+const int ROW_NUM    = 4; // four rows
+const int COLUMN_NUM = 3; // four columns
+String PIN [4] = {"1","2","0","4"};
 String KOD [4] ={"0","0","0","0"};
 char keys[ROW_NUM][COLUMN_NUM] = {
   {'1','2','3'},
@@ -422,35 +162,131 @@ char keys[ROW_NUM][COLUMN_NUM] = {
   {'*','0','#'}
 };
 char Cislo[4]{'1','2','3','4'};
-byte pin_rows[ROW_NUM] = {3, 4, 5, 6};      // connect to the row pinouts of the keypad
-byte pin_column[COLUMN_NUM] = {7, 8, 9}; // connect to the column pinouts of the keypad
-Keypad keypad = Keypad(makeKeymap(keys), pin_rows, pin_column, ROW_NUM, COLUMN_NUM );
-LiquidCrystal_I2C lcd(0x27, 20, 4); // I2C address 0x27, 16 column and 2 rows
-int cursorColumn = 10;
+
+byte pin_rows[ROW_NUM] = {9, 8, 7, 6};      // connect to the row pinouts of the keypad
+byte pin_column[COLUMN_NUM] = {5, 4, 3}; // connect to the column pinouts of the keypad
 
  
 
+Keypad keypad = Keypad(makeKeymap(keys), pin_rows, pin_column, ROW_NUM, COLUMN_NUM );
+LiquidCrystal_I2C lcd(0x27, 20, 4); // I2C address 0x27, 16 column and 2 rows
+
+ 
+
+int cursorColumn = 0;
+///////////////////////////////////////////////////////////////////////////////////////////
 
 
+
+
+
+
+
+
+
+
+ 
+//Setup
 void setup(){
-  Serial.begin(9600);  
-  pinMode(cidloPin, INPUT);
-  pinMode(inputPin, INPUT);     // declare sensor as input
-  // nastavení přerušení na pin 2 (int0) 
-  // při rostoucí hraně (logO->log1) se vykoná program prerus 
-  attachInterrupt(0, Detekce, RISING);
-  pinMode(pinOut, INPUT);
-  pinMode(VIBRATION_PIN, INPUT);
   lcd.begin(); // initialize the lcd
   lcd.backlight();
+
+  //KOD
   lcd.setCursor(2,0);
   lcd.print("Zabezpecovaci"); 
   lcd.setCursor(2,1);
   lcd.print("---System---"); 
   delay(2500);
   lcd.clear();
-  lcd.print("Zadej Nový PIN :");
+}
+//////////////////////////////////////////////
+ 
+//Loop
+void loop(){
+  if(PrvniStart == 0){
+  NovyPin();
+  VSongu();
+  }
+  if(P==1){
+  char zadejC = keypad.getKey();
+  if (zadejC) {
+   lcd.print(s);
+   if(s < 1){
+    q = zadejC;
+    lcd.setCursor(c, 1);
+    //lcd.print(KOD[s]);
+    s++;
+    c++;
+     }
+    lcd.setCursor(cursorColumn, Radek); // move cursor to   (cursorColumn, 0)
+    lcd.print("*"); 
+    
+    cursorColumn++;                 // move cursor to next position
+                                    // if reaching limit, clear LCD
+      
+  } 
+
+
+if(cursorColumn == 1) {
+   if(q == "1"){
+      Song = 1;
+      lcd.clear();
+      lcd.setCursor(0,0); 
+      lcd.print("Znelka je Vybrana"); 
+      lcd.setCursor(0,1); 
+      lcd.print("Pirati z Karibiku"); 
+      zaply = 1;
+      P++;
+      clearKod();
+     
+      }else{
+    if(q == "2"){
+      Song = 2;
+      lcd.setCursor(0,0);
+      lcd.print("Znelka je Vybrana"); 
+      lcd.setCursor(0,1); 
+      lcd.print("The Lion Sleeps Tonight"); 
+      zaply = 1;
+      P++;
+      clearKod();
+     
+      }else{
+        SpatnaPisen();
+        }
+      }
+  }
+  }
+  if(zaply == 1){
+  Menu();
+  ZadaniPinu();
+  }
+  if (zaply == 2){
+  if(Start == 1){
+  lcd.print("---Uspesnee---");
   lcd.setCursor(0,1);
+  lcd.print("---spusteno---");
+  delay(1500);
+  lcd.clear();
+  Start++;
+  }
+  //Infra();
+  Vibrace();
+  //PIR();
+  }
+}
+///////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+
+
+//Metody
+//::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+void NovyPin(){
   char NP = keypad.getKey();
   if (NP) {
    if(s < 4){
@@ -462,95 +298,127 @@ void setup(){
     c++;
      }
     lcd.setCursor(cursorColumn, Radek); // move cursor to   (cursorColumn, 0)
-    lcd.print("NP"); 
+    lcd.print("+"); 
     
     cursorColumn++;                 // move cursor to next position
                                     // if reaching limit, clear LCD
   }
-  lcd.print("Vyber alarmni znelku");
-  delay(1500);
+  if(cursorColumn == 4) { 
+    lcd.clear();
+    lcd.print("Pin byl ulozen");
+    delay(1000);
+     clearKod();
+     PrvniStart++;
+     ZaplyVyber = 1;
+    }                            
+  }
+//::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+
+//::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+  void ZadaniPinu(){
+  char pismeno = keypad.getKey();
+  
+  if (pismeno) {
+   if(s < 4){
+    q = pismeno;
+    KOD[s] = q;
+    lcd.setCursor(c, 1);
+    //lcd.print(KOD[s]);
+    s++;
+    c++;
+     }
+    lcd.setCursor(cursorColumn, Radek); // move cursor to   (cursorColumn, 0)
+    lcd.print("*"); 
+    
+    cursorColumn++;                 // move cursor to next position
+                                    // if reaching limit, clear LCD
+      
+  } 
+    if(cursorColumn == 14) {       
+    if(KOD[0]==PIN[0] && KOD[1] == PIN[1] && KOD[2] == PIN[2] && KOD[3] == PIN[3]){
+            lcd.clear();
+            cursorColumn = 0;
+            lcd.print("Pin je spravny");
+            //alarm++;
+            delay(2000);
+            lcd.clear();
+            cursorColumn = 10;
+            clearKod();
+            zaply = 2;
+            if(PoDea == 1){
+              delay(1500);
+              lcd.setCursor(0,0);
+              lcd.print("Zadej PIN:"); 
+              cursorColumn = 10;
+              PoDea++;
+              }
+            if(Radek==1){
+             // tone(buzzer,261,250);
+              //tone(buzzer,349,250);
+              }
+            if(D == 1){  
+            Deaktivace();
+            }
+            //lcd.print(zaply);
+            }else{
+              lcd.clear();
+              cursorColumn = 0;
+              lcd.print("Pin neni spravny");
+               //tone(buzzer,349,250);
+               //tone(buzzer,523,250);
+              delay(2000);
+              lcd.clear();
+              cursorColumn = 10;
+              if(Radek==1){
+                lcd.print("Pro deaktivaci");
+                lcd.setCursor(0,1);
+                lcd.print("Zadej PIN:"); 
+                cursorColumn = 10;
+                }else{
+              lcd.print("Zadej PIN:");
+              cursorColumn = 10;
+                } 
+              clearKod();
+              cursorColumn = 10;
+              }
+             // lcd.print(PinPoplach);
+  }
+ 
+  }
+//::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+//::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::  
+void VSongu(){
+  if(ZaplyVyber == 1){
+    if( P == 0){
+  delay(1000); 
+  lcd.clear();
+  lcd.print("Vyber alarmni");
+  lcd.setCursor(0,1);
+  lcd.print("znelku");
+  lcd.setCursor(0,1);
+  delay(2500);
   lcd.clear();
   lcd.print("Stisknutim cisla");
   lcd.setCursor(0,1);
-  lcd.print("jedna nebo dva vyber:");
-  delay(1500);
+  lcd.print("jedna nebo dva:");
+  delay(2500);
   lcd.clear();
   lcd.setCursor(0,0);
   lcd.print("1.Pirati z Karibiku"); 
   lcd.setCursor(0,1);
   lcd.print("2.The Lion Sleeps Tonight"); 
-  char pisen = keypad.getKey();
-  if (pisen) {
-    Song == pisen;
-  lcd.print("Znelka je Vybrana"); 
-  }
-  clearKod();
-}
-
- 
-
-
-
-
-
-
-
-void loop(){
-  Menu();
- if(zaply == 0){
-   pinMode(cidloPin, INPUT);
-  // nastavení přerušení na pin 2 (int0) 
-  // při rostoucí hraně (logO->log1) se vykoná program prerus 
-
-  attachInterrupt(0, Detekce, RISING);
-  if(stav == 0){
-  stav = !(digitalRead(pinOut));
-    if(stav == 1){
-      //sysout na stránky
-      stav = 0;
-      }
-  }
- }
-ZadaniPinu();
-if (zaply == 1){
-  if(Start == 1){
-  lcd.print("---Uspesnee---");
-  lcd.setCursor(0,1);
-  lcd.print("---spusteno---");
-  delay(1500);
+  delay(2000);
   lcd.clear();
-  Start++;
-  }
-  Infra();
-  Vibrace();
-  PIR();
+  P++;
+  clearKod();
+    }
   }
 }
+//::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// Metody 
-void Infra(){
-    bool stav;
-    stav = !(digitalRead(InfraPin));
-     //lcd.print(stav);
-     if(stav == 1){
-      Detekce();
-      Poplach();
-} 
-  }
+//::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 void Vibrace(){
   if (!digitalRead(VIBRATION_PIN)) {
  //Serial.println(digitalRead(VIBRATION_PIN));
@@ -558,27 +426,9 @@ void Vibrace(){
  Poplach();
  }
   }
-void Detekce() {
-  // pokud je aktivován digitální vstup,
-  // vypiš informaci po sériové lince
-  lcd.print("Zaznamenan Pohyb");
-  delay(2000);
-  lcd.clear();
-}
-void clearKod(){
-  KOD[0] = "0";
-  KOD[1] = "0";
-  KOD[2] = "0";
-  KOD[3] = "0";
-  s = 0;
-  c = 0;
-  Radek = 0;
-}
+//::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::  
 
-void clearAlarm(){
-  alarm = 0;
-}
-
+//::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::  
 void Poplach(){
   clearAlarm();
 // Zapnout Ledky
@@ -586,9 +436,9 @@ void Poplach(){
   lcd.print("Pro deaktivaci");
   lcd.setCursor(0,1);
   lcd.print("Zadej PIN:"); 
+  cursorColumn = 10;
   Radek++;
-  if(Song == 1){
-    //Songa jedna
+  D = 1;
        for(int thisNote = 0; thisNote < notes * 2; thisNote = thisNote + 2) {
   ZadaniPinu();
     // calculates the duration of each note
@@ -614,111 +464,93 @@ void Poplach(){
     noTone(buzzer);
        }
   }
-  }else{
-    //Songa Dva
-  int size1 = sizeof(durations) / sizeof(int);
-
-  for (int note1 = 0; note1 < size1; note1++) {
-    int duration2 = 1000 / durations[note1];
-    tone(buzzer, melody2[note1], duration2);
-    int pauseBetweenNotes = duration2 * 1.30;
-    delay(pauseBetweenNotes);
-    
-    //stop the tone playing:
-    noTone(buzzer);
-
-    if(alarm == 1){
-      break;
-    }else{
-    // we only play the note for 90% of the duration, leaving 10% as a pause
-    tone(buzzer, melody2[ThisNote], noteDuration*0.9);
-
-    // Wait for the specief duration before playing the next note.
-    delay(noteDuration);
-    // stop the waveform generation before the next note.
-    noTone(buzzer);
-       }
-       }
-  }
   clearAlarm();
  
+  
 }
+//::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::  
+/////////////////////////////////////////////////////////////////////////////
 
-void Menu(){
+
+  
+//pomocné Metody
+//::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+  void Menu(){
  if(Start == 0){
+ delay(1000);
+ lcd.clear();
  lcd.print("Zadej PIN:"); 
  Start++; 
+ cursorColumn = 10;
  }
 }
-void PIR(){
-  val = digitalRead(inputPin);  // read input value
-  if (val == HIGH){   // check if the input is HIGH      
-    if (pirState == LOW){
-      pirState = HIGH;
-      Detekce();
-      Poplach();
-    }
-  } 
-  else {
-    if (pirState == HIGH){
-     // Serial.println("Motion ended!");  // print on output change
-      pirState = LOW;
-    }
-  }
-}
-void ZadaniPinu(){
-  char pismeno = keypad.getKey();
-  if (pismeno) {
-   if(s < 4){
-    q = pismeno;
-    KOD[s] = q;
-    lcd.setCursor(c, 1);
-    //lcd.print(KOD[s]);
-    s++;
-    c++;
-     }
-    lcd.setCursor(cursorColumn, Radek); // move cursor to   (cursorColumn, 0)
-    lcd.print("*"); 
-    
-    cursorColumn++;                 // move cursor to next position
-                                    // if reaching limit, clear LCD
-  }
+//::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-    if(cursorColumn == 14) {       
-    if(KOD[0]==PIN[0] && KOD[1] == PIN[1] && KOD[2] == PIN[2] && KOD[3] == PIN[3]){
-            lcd.clear();
-            cursorColumn = 0;
-            lcd.print("Pin je spravny");
-            alarm++;
-            delay(2000);
-            lcd.clear();
-            cursorColumn = 10;
-            clearKod();
-            zaply = 1;
-            if(Radek==1){
-              tone(buzzer,261,250);
-              tone(buzzer,349,250);
-              }
-            //lcd.print(zaply);
-            }else{
-              lcd.clear();
-              cursorColumn = 0;
-              lcd.print("Pin neni spravny");
-               tone(buzzer,349,250);
-               tone(buzzer,523,250);
-              delay(2000);
-              lcd.clear();
-              cursorColumn = 10;
-              if(Radek==1){
-                lcd.print("Pro deaktivaci");
-                lcd.setCursor(0,1);
-                lcd.print("Zadej PIN:"); 
-                }else{
-              lcd.print("Zadej PIN:");
-                } 
-              clearKod();
-              }
-             // lcd.print(PinPoplach);
-  }
- 
-  }
+//::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+void clearKod(){
+  KOD[0] = "0";
+  KOD[1] = "0";
+  KOD[2] = "0";
+  KOD[3] = "0";
+  s = 0;
+  c = 0;
+  cursorColumn = 0; 
+  q = "0";
+}
+//::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+//::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+void Detekce() {
+  lcd.print("Zaznamenan Pohyb");
+  delay(2000);
+  lcd.clear();
+}
+//::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+//::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+void clearAlarm(){
+  alarm = 0;
+}
+//::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+//::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+void SpatnaPisen(){
+  if(q != "2" && q != "1"){
+    q = "0";
+    lcd.setCursor(0,0); 
+    lcd.print("Znelka je");
+    lcd.setCursor(0,1); 
+    lcd.print("Vybrana Nahodne");
+    delay(2000); 
+    Song = 1;
+    zaply = 1;
+    P++;
+    
+    clearKod();
+    }
+}
+//::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+//::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+void Deaktivace(){
+  lcd.print("----System----");
+  lcd.setCursor(0,1);
+  lcd.print("--Deaktivovan--");
+  delay(1500);
+  lcd.clear();
+  D = 0;
+  Song = 1;
+  ZaplyVyber = 0;
+  Start = 0;
+  q = "0";
+  s = 0;
+  c = 1;
+  Radek = 0;
+  zaply = 1;
+  alarm = 0;
+  PoDea = 1;
+  loop();
+}
+//::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+////////////////////////////////////////////////////
